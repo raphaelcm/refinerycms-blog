@@ -1,3 +1,30 @@
+## 1.8.0 [UNRELEASED]
+* extraneous shared/_post partial was moved directly into posts/show [nicinabox](https://github.com/nicinabox)
+* blog archive list helper logic refactored (HTML exists in view template) [nicinabox](https://github.com/nicinabox)
+* pretty "Draft" label added to admin list of blog posts [nicinabox](https://github.com/nicinabox)
+* [See full list](https://github.com/resolve/refinerycms-blog/compare/1.7.0...1.8.0)
+
+## 1.7.0 [05 December 2011]
+* Bulgarian translations [mirosr](https://github.com/mirosr)
+* posts/tagged... params[:tag_name] is optional [joemsak](https://github.com/joemsak)
+* Bug Fix on Categorization relationship: destroying a post produced error because no primary key existed on join table [joemsak](https://github.com/joemsak)
+* Bug fix on archive listing, don't include draft posts [jgrevich](https://github.com/jgrevich)
+* [See full list](https://github.com/resolve/refinerycms-blog/compare/1.6.2...1.7.0)
+
+## 1.6.2 [29 June 2011]
+* Custom teaser field to overwrite the automatic truncation of the body [wikyd](https://github.com/wikyd)
+* Tagging URL strategy updated again [joemsak](https://github.com/joemsak)
+* Tagging bug fixed [ruprict](https://github.com/ruprict)
+* Refactored specs [parndt](https://github.com/parndt)
+* * [See full list](https://github.com/resolve/refinerycms-blog/compare/1.6.1...1.6.2)
+
+
+## 1.6.1 [21 June 2011]
+* Tagging URL strategy updated for reliability /blog/posts/tagged/ID-name-parameterized [joemsak](https://github.com/joemsak)
+* Heroku/PostgreSQL support for autocomplete tags [joemsak](https://github.com/joemsak)
+* [See full list](https://github.com/resolve/refinerycms-blog/compare/1.6...1.6.1)
+
+
 ## 1.6 [20 June 2011]
 * Category bug fixes and cleanup [wikyd](https://github.com/wikyd)
 * Cleaned up deprecated code [ugisozols](https://github.com/ugisozols)
@@ -6,11 +33,14 @@
 * More testing [wakeless](https://github.com/wakeless)
 * Tag list autocomplete baked in [joemsak](https://github.com/joemsak)
 * Customize the URL of your blog post [wikyd](https://github.com/wikyd)
+* [See full list](https://github.com/resolve/refinerycms-blog/compare/1.5...1.6)
+
 
 ## 1.5 [28 May 2011]
 
 * Added Gravatar support. [parndt](https://github.com/parndt)
 * Added support for Refinery CMS 1.0.0 and above. [parndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms-blog/compare/1.4...1.5)
 
 ## 1.4 [26 May 2011]
 

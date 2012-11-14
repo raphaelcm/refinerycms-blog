@@ -1,10 +1,8 @@
 module BlogPostsHelper
   def blog_archive_list
-    posts = BlogPost.select('published_at').all_previous
+    posts = BlogPost.live.select('published_at').all_previous
     return nil if posts.blank?
-    html = '<section id="blog_archive_list"><h2>'
-    html << t('blog.shared.archives')
-    html << '</h2><nav><ul>'
+    html = ''
     links = []
     super_old_links = []
 
@@ -20,7 +18,7 @@ module BlogPostsHelper
     links.each do |l|
       year = l.split('/')[1]
       month = l.split('/')[0]
-      count = BlogPost.by_archive(Time.parse(l)).size
+      count = BlogPost.live.by_archive(Time.parse(l)).size
       text = t("date.month_names")[month.to_i] + " #{year} (#{count})"      
       html << "<li>"
       html << link_to(text, archive_blog_posts_path(:year => year, :month => month))
@@ -28,13 +26,12 @@ module BlogPostsHelper
     end
     super_old_links.each do |l|
       year = l.split('/')[1]
-      count = BlogPost.by_year(Time.parse(l)).size
+      count = BlogPost.live.by_year(Time.parse(l)).size
       text = "#{year} (#{count})"
       html << "<li>"
       html << link_to(text, archive_blog_posts_path(:year => year))
       html << "</li>"
     end
-    html << '</ul></nav></section>'
     html.html_safe
   end
 
@@ -42,15 +39,18 @@ module BlogPostsHelper
     post.next.present? or post.prev.present?
   end
 
+  def blog_post_teaser_enabled?
+    BlogPost.teasers_enabled?
+  end
+
   def blog_post_teaser(post)
-    if post.custom_teaser.present?
+    if post.respond_to?(:custom_teaser) && post.custom_teaser.present?
      post.custom_teaser.html_safe
     else
-     truncate(
-       post.body,
+     truncate(post.body, {
        :length => RefinerySetting.find_or_set(:blog_post_teaser_length, 250),
        :preserve_html_tags => true
-      )
+      }).html_safe
     end
   end
 end

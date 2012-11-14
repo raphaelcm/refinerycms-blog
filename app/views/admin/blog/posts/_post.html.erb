@@ -1,8 +1,14 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(post) -%>">
   <span class='title'>
     <%= post.title %>
-    <span class="preview"><%= post.published_at.try(:strftime, '%b %d, %Y') || 'draft' %><%= " by #{post.author.username}" if post.author.present? %></span>
+    <span class="preview">
+      <%= post.published_at.try(:strftime, '%b %d, %Y') || 'draft' %>
+      <%= " by #{post.author.username}" if post.author.present? %>
+    </span>
   </span>
+  <% if post.draft? %>
+    <span class="label notice">Draft</span>
+  <% end %>
   <span class='actions'>
     <%= link_to refinery_icon_tag("application_go.png"), blog_post_url(post),
         :title => t('.view_live_html'),
@@ -13,6 +19,6 @@
         :class => "cancel confirm-delete",
         :title => t('.delete'),
         :method => :delete,
-        :confirm => t('shared.admin.delete.message', :title => post.title) %>
+        :confirm => t('message', :scope => 'shared.admin.delete', :title => post.title) %>
   </span>
 </li>

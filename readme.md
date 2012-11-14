@@ -12,12 +12,13 @@ Options:
 ## Requirements
 
 Refinery CMS version 1.0.0 or above.
+Your Rails 3 application should not be called "blog"
 
 ## Install
 
 Open up your ``Gemfile`` and add at the bottom this line:
 
-    gem 'refinerycms-blog', '~> 1.5'
+    gem 'refinerycms-blog', '~> 1.8.0'
 
 Now, run ``bundle install``
 
